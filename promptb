@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css">
+    <title>PHYSICAL workshop 1 website</title>
+  </head>
+  <body>
+    <h2 id="top">PHYSICAL workshop 1 by HJH</h2>
+    <h3>Time & Space </h3>
+    <ol>
+      <li>
+        Prompt A
+      </li>
+      <li>
+        Prompt B
+      </li>
+    </ol>
+    <br>
+    <br>
+    <div>
+      <h3>About this website</h3>
+      <p>blank</p>
+      <div>
+        <br>
+        <br>
+    <h3>Exercises</h3>
+    <a href="https://docs.google.com/document/d/1Db9MQ_IsYH_xYH77_qWpJoD3ThMjrDA-p-LfdQzl8zU/edit?usp=sharing" target="_blank">HOW?</a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer>
+      <div>
+        <a href="#top">Back to top</a>
+      </div>
+    </footer>
+  </body>
+</html>
