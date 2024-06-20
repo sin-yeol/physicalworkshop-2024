@@ -1,9 +1,411 @@
 
-    body {
-        background-color: rgb(226, 226, 226);
+
+* {
+  box-sizing: border-box;
+  position: relative;
+}
+
+body, .header_wrap, .container, .figure, .background {
+  position: relative;
+}
+
+html {
+  font-size: 16px;
+}
+
+:root {
+  --w: #E5E4E3;
+  --r: #AA1600;
+  --y: #EAA400;
+  --k: #333231;
+  --g: #B7B0A8;
+  --G: #8E8A86;
+}
+
+
+/* 강조설정 */
+.light {font-weight: 300;}
+.bold {font-weight: 700;}
+
+.highlight {
+  font-weight: 700;
+}
+.highlight::before {
+  content: '';
+  position: absolute;
+  bottom: 0.78rem;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background-color: var(--g);
+  z-index: -1;
+}
+
+
+/* 기본 */
+body {
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background: var(--w);
+  text-align: justify;
+  max-width: 100%;
+  font-weight: 500;
+  font-size: 1.5rem;
+  font-family: 'koPubWorldBatang', serif;
+  transform: scaleX(0.96);
+  letter-spacing: -0.13rem;
+  line-height: 1.8;
+}
+
+.container {
+  color: var(--k);
+  max-width: 1020px;
+  margin-left: auto;
+  padding: 0.8rem 8rem 2.5rem 4rem;
+}
+
+
+
+
+/* back to top */
+#backToTop {
+  position: fixed;
+  bottom: 0rem;
+  right: 0rem;
+  display: none; /* 초기에는 숨겨진 상태 */
+  /* background-color: var(--w); */
+  background-color: rgba(0, 0, 0, 0);
+  color: var(--g);
+  border: none;
+  border-radius: 5px;
+  padding: 16px 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 999;
+}
+
+#backToTop span {
+  white-space: nowrap;
+  position: absolute; /* 텍스트를 absolute 위치로 설정 */
+  top: 52%; /* 버튼 내에서 수직 가운데 정렬을 위해 50% 설정 */
+  left: 50%; /* 버튼 내에서 수평 가운데 정렬을 위해 50% 설정 */
+  transform: translate(-50%, -50%); /* 텍스트를 가운데 정렬 */
+  margin: 0;
+  line-height: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#backToTop:hover {
+  color: var(--G);
+}
+
+a, a:link, a:visited {
+  color: var(--k);
+  font-weight: bold;
+}
+
+
+
+
+/* 애니메이션 */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
+}
+
+/* 애니메이션 효과 적용 */
+.fade-in {
+  display: block;
+  animation: fadeIn 2s forwards;
+}
+
+.fade-out {
+  animation: fadeOut 2s forwards;
+}
+
+/* 본문이 보일 때 설정 */
+.title-screen, .content {
+  display: none;
+}
+
+.content.show, .title-screen.show {
+  display: block;
+  animation: fadeIn 2s forwards;
+}
+
+
+
+/* 폰트 */
+h1 { 
+  white-space: nowrap;
+  letter-spacing: -0.09em;
+  font-size: 2rem;
+  font-weight: 700;
+  text-indent: 0.8rem;
+  margin: 0;
+  padding: 0rem;
+  text-align: left;
+}
+
+h2 {   
+  text-indent: 0.8rem;
+  letter-spacing: -0.09em;
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin: 0;
+  text-align: left;
+}
+
+h3 { /* 사이트 제목에만 쓸 것 */
+  letter-spacing: -0.09em;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--r);
+  margin-right: 3rem;
+}
+
+h3::before {
+  content: ""; /* 내용 없음 */
+  position: absolute; /* h1 요소에 상대적으로 위치 */
+  top: 50%; /* 상단 여백 */
+  left: 50%; /* 좌측 여백 */
+  transform: translateX(-22%) translateY(-50%);
+  width: 10rem; /* 원의 너비 */
+  height: 10rem; /* 원의 높이 */
+  border: 0.13rem solid var(--y);
+  border-radius: 50%; /* 원 모양으로 설정 */
+  z-index: -1; /* h1 요소의 배경으로 설정하기 위해 z-index 설정 */
+}
+
+p {
+  text-indent: 0.8rem;
+}
+
+p span {
+  font-weight: bold;
+  font-style: italic
+}
+
+
+/* 인용문 */
+.quote {
+  font-size: 1.4rem;
+  font-family: "koPubWorldDotum";
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+
+
+/* 참조이미지 */
+.figure { 
+  width: auto; 
+  margin: 0 auto;
+  text-align: center; 
+}
+
+.figure img { 
+  max-width: 100%;
+}
+
+
+figcaption {
+  font-family: "Pretendard";
+  font-size: 1.3rem;
+  font-weight: 300;
+  transform: scaleX(1);
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  height: 100vh;
+  position: absolute;
+}
+
+.background img { 
+  max-width: 100%; 
+}
+
+
+/* main title */
+.main {
+  min-height: 40rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.main h1 {
+  position: absolute;
+  bottom: 1.5rem;
+}
+
+
+/* 표 */
+table {
+  margin-top: 0.7rem;
+  width: 100%;
+  background: var(--w);
+  border-top: 2px solid var(--k);
+  border-bottom: 2px solid var(--k);
+  border-collapse: collapse;
+}
+
+table tr, table td, table th {
+  border: 1px solid var(--G);
+  border-left: 2rem solid transparent; /* 좌측 여백 */
+  border-right: 2rem solid transparent; /* 우측 여백 */
+  border-left: none;
+  border-right: none;
+}
+
+table td, table th {
+  padding: 0.4rem 1rem 0.05rem 1rem;
+}
+
+
+/* 모바일 반응형. 아직 제대로 안 만짐 나중에 수정하자
+  @media (max-width: 600px) {
+    .container {
+        max-width: 100%;
     }
-    h1 {
-        font-size: medium;
-        font-weight: 300;
-        line-height: 33px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    p {
+      font-size: 1.4rem;
     }
+  }
+
+  @media screen and (max-width: 768px) {
+    .figure {
+      width: 100%;
+      padding: 0;
+    }
+    .figure img {
+      width: 100%;
+    }
+    .background {
+      padding: 0;
+    }
+    figcaption {
+      font-family: 'kopub Batang';
+      font-size: 1em;
+      text-align: left;
+      padding: 0 1rem;
+    }
+    table {
+      font-size: 1.2rem;
+      letter-spacing: 0.2px;
+      line-height: 1.4em;
+    }
+    table td, table th {
+      padding: 0.4em 0 0.3em;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    p {
+      font-size: 1.2rem;
+    }
+  }
+
+
+@media screen and (max-width: 350px) {
+  p {
+    font-size: 1.1rem;
+  }
+} */
+
+
+
+
+@font-face {
+  font-family: 'KoPubWorldDotum';
+  font-weight: 300;
+  font-style: normal;
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumLight.eot');
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumLight.eot?#iefix') format('embedded-opentype'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumLight.woff2') format('woff2'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumLight.woff') format('woff'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumLight.ttf') format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: 'KoPubWorldDotum';
+  font-weight: 500;
+  font-style: normal;
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumMedium.eot');
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumMedium.eot?#iefix') format('embedded-opentype'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumMedium.woff2') format('woff2'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumMedium.woff') format('woff'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumMedium.ttf') format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: 'KoPubWorldDotum';
+  font-weight: 700;
+  font-style: normal;
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumBold.eot');
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumBold.eot?#iefix') format('embedded-opentype'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumBold.woff2') format('woff2'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumBold.woff') format('woff'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumBold.ttf') format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'koPubWorldBatang';
+  font-weight: 300;
+  font-style: normal;
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/koPubWorldBatangw.eot');
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/koPubWorldBatangw.eot?#iefix') format('embedded-opentype'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/koPubWorldBatangw.woff2') format('woff2'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/koPubWorldBatangw.woff') format('woff'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/koPubWorldBatangw.ttf') format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: 'koPubWorldBatang';
+  font-weight: 500;
+  font-style: normal;
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/koPubWorldBatangMedium.eot');
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/koPubWorldBatangMedium.eot?#iefix') format('embedded-opentype'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/koPubWorldBatangMedium.woff2') format('woff2'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/koPubWorldBatangMedium.woff') format('woff'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/koPubWorldBatangMedium.ttf') format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: 'koPubWorldBatang';
+  font-weight: 700;
+  font-style: normal;
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/koPubWorldBatangBold.eot');
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/koPubWorldBatangBold.eot?#iefix') format('embedded-opentype'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/koPubWorldBatangBold.woff2') format('woff2'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/koPubWorldBatangBold.woff') format('woff'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/koPubWorldBatangBold.ttf') format("truetype");
+  font-display: swap;
+}
